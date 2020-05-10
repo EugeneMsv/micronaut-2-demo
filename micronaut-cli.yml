@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: com.eugenemsv.micronaut
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [app-name, data, data-jpa, docker, h2, http-client, java, java-application, jax-rs, jdbc-hikari, jetty-server, junit, logback, maven, properties, readme, shade]
