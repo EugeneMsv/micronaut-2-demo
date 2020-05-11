@@ -1,0 +1,10 @@
+###
+POST http://localhost:8080/movie
+Content-Type: application/json
+
+{
+  "name": "Pirates of the Caribbean",
+  "releaseDate": "2007-12-03",
+  "rate": "8.5"
+}
+

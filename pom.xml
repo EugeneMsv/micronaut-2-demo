@@ -24,6 +24,9 @@
     <micronaut.jaxrs.version>1.0.0</micronaut.jaxrs.version>
     <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
     <maven-failsafe-plugin.version>2.22.2</maven-failsafe-plugin.version>
+    <logback-classic.version>1.2.3</logback-classic.version>
+    <lombok.version>1.18.8</lombok.version>
+    <micronaut-openapi.version>1.5.0</micronaut-openapi.version>
   </properties>
 
   <repositories>
@@ -70,20 +73,26 @@
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>io.micronaut.jaxrs</groupId>
-      <artifactId>micronaut-jaxrs-server</artifactId>
+      <groupId>io.swagger.core.v3</groupId>
+      <artifactId>swagger-annotations</artifactId>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
-      <version>1.2.3</version>
+      <version>${logback-classic.version}</version>
       <scope>runtime</scope>
     </dependency>
     <dependency>
       <groupId>com.h2database</groupId>
       <artifactId>h2</artifactId>
       <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -140,7 +149,16 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
+          <fork>true</fork>
+          <compilerArgs>
+            <arg>-J-Dmicronaut.openapi.views.spec=swagger-ui.enabled=true,swagger-ui.theme=flattop</arg>
+          </compilerArgs>
           <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>${lombok.version}</version>
+            </path>
             <path>
               <groupId>io.micronaut</groupId>
               <artifactId>micronaut-inject-java</artifactId>
@@ -157,9 +175,9 @@
               <version>${micronaut.data.version}</version>
             </path>
             <path>
-              <groupId>io.micronaut.jaxrs</groupId>
-              <artifactId>micronaut-jaxrs-processor</artifactId>
-              <version>${micronaut.jaxrs.version}</version>
+              <groupId>io.micronaut.configuration</groupId>
+              <artifactId>micronaut-openapi</artifactId>
+              <version>${micronaut-openapi.version}</version>
             </path>
           </annotationProcessorPaths>
         </configuration>

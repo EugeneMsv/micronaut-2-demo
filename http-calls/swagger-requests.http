@@ -1,0 +1,6 @@
+###
+GET http://localhost:8080/swagger/micronaut-2-demo-0.1.yml
+
+
+### Swagger ui
+GET http://localhost:8080/swagger-ui
